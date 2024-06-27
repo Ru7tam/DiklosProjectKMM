@@ -1,4 +1,4 @@
-package org.company.app.features.login
+package org.company.app.features.login.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

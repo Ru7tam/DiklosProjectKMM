@@ -1,4 +1,4 @@
-package org.company.app.features.home
+package org.company.app.features.addcamera.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,10 +14,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeView() {
-    Box(modifier = Modifier.fillMaxSize(),
+fun AddCameraView(){
+    Box(
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text( modifier = Modifier.fillMaxWidth().height(64.dp), textAlign = TextAlign.Center, text = "Home", color = Color.White, fontSize = 36.sp)   
+        Text(
+            modifier = Modifier.fillMaxWidth().height(64.dp),
+            textAlign = TextAlign.Center,
+            text = "Добавить камеру",
+            color = Color.White,
+            fontSize = 36.sp
+        )
     }
 }

@@ -1,4 +1,4 @@
-package org.company.app.features.archive.presentation
+package org.company.app.features.archive.ui
 
 import org.company.app.base.BaseViewModel
 import org.company.app.features.archive.presentation.models.ArchiveAction

@@ -1,4 +1,4 @@
-package org.company.app.features.login
+package org.company.app.features.login.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

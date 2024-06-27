@@ -1,4 +1,4 @@
-package org.company.app.features.home
+package org.company.app.features.home.ui
 
 import androidx.compose.runtime.Composable
 

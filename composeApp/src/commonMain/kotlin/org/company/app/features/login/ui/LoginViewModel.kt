@@ -1,4 +1,4 @@
-package org.company.app.features.login
+package org.company.app.features.login.ui
 
 import org.company.app.base.BaseViewModel
 import org.company.app.features.login.models.LoginAction

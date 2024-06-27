@@ -1,4 +1,4 @@
-package org.company.app.features.home
+package org.company.app.features.home.ui
 
 import org.company.app.base.BaseViewModel
 import org.company.app.features.home.models.HomeAction

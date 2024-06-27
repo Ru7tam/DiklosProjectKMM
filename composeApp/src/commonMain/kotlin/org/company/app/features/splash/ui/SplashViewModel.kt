@@ -1,4 +1,4 @@
-package org.company.app.features.splash
+package org.company.app.features.splash.ui
 
 import org.company.app.base.BaseViewModel
 import org.company.app.features.login.domain.IsUserAuthorizedUseCase

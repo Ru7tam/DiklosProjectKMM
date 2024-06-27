@@ -1,4 +1,4 @@
-package org.company.app.features.splash
+package org.company.app.features.splash.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
