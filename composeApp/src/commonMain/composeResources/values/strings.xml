@@ -14,6 +14,12 @@
     <!-- Settings -->
     <string name="settings_cameras">Камеры</string>
     <string name="settings_servers">Серверы</string>
-    <string name="settings_signout_button">Покинуть сервер</string>
-    
+    <string name="settings_signOut_button">Покинуть сервер</string>
+    <string name="settings_roles">Ролей</string>
+    <string name="settings_argusPro">ArgusPro</string>
+    <string name="settings_add_cameras">Добавить камеру</string>
+    <string name="settings_list_cameras">Список камер</string>
+    <string name="settings_add_server">Добавить сервер</string>
+    <string name="settings_list_server">Список посещенных серверов</string>
+
 </resources>

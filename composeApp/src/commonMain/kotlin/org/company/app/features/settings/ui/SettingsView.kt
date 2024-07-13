@@ -1,6 +1,11 @@
 package org.company.app.features.settings.ui
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -12,26 +17,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import kmp_project.composeapp.generated.resources.*
 import kmp_project.composeapp.generated.resources.Res
+import kmp_project.composeapp.generated.resources.bottom_settings
+import kmp_project.composeapp.generated.resources.ic_add
+import kmp_project.composeapp.generated.resources.ic_arrow_right
+import kmp_project.composeapp.generated.resources.ic_groups
+import kmp_project.composeapp.generated.resources.ic_list
+import kmp_project.composeapp.generated.resources.ic_project
+import kmp_project.composeapp.generated.resources.ic_webcam
+import kmp_project.composeapp.generated.resources.settings_add_cameras
+import kmp_project.composeapp.generated.resources.settings_add_server
+import kmp_project.composeapp.generated.resources.settings_argusPro
 import kmp_project.composeapp.generated.resources.settings_cameras
+import kmp_project.composeapp.generated.resources.settings_list_cameras
+import kmp_project.composeapp.generated.resources.settings_list_server
+import kmp_project.composeapp.generated.resources.settings_roles
 import kmp_project.composeapp.generated.resources.settings_servers
-import org.company.app.common.button.SettingsMenuItemButtun
-import org.company.app.features.archive.ui.ArchiveScreen
-import org.company.app.features.home.ui.HomeScreen
-import org.company.app.features.roles.ui.RolesScreen
+import kmp_project.composeapp.generated.resources.settings_signOut_button
+import org.company.app.common.button.SettingsMenuItemButton
 import org.company.app.features.settings.models.SettingsEvent
 import org.company.app.features.settings.models.SettingsViewState
-import org.company.app.navigation.AppScreens
-import org.company.app.navigation.main.MainScreens
-import org.company.app.theme.AppTheme
 import org.company.app.theme.FamousTheme
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
 enum class SettingsScreens(val route: String) {
@@ -49,16 +57,31 @@ internal fun SettingsView(
     eventHandler: (SettingsEvent) -> Unit,
     navController: NavController // Добавляем NavController в параметры
 ) {
-    Column(modifier = Modifier.padding(top = 55.dp)) {
+    Column(modifier = Modifier.padding(top = 65.dp)) {
 
-        SettingsMenuItemButtun(
-            text = "Ролей",
+        Box(
+            modifier = Modifier.padding(start = 16.dp),
+            contentAlignment = Alignment.CenterStart
+        ) {
+            Text(
+                text = stringResource(Res.string.bottom_settings),
+                color = FamousTheme.colors.primaryText,
+                fontWeight = FontWeight.Bold, fontSize = 22.sp
+            )
+        }
+
+        SettingsMenuItemButton(
+            mainImage = painterResource(Res.drawable.ic_groups),
+            text = stringResource(Res.string.settings_roles),
+            arrowImage = painterResource(Res.drawable.ic_arrow_right)
         ) {
             navController.navigate(SettingsScreens.Roles.route) // Навигация на экран Roles
         }
 
-        SettingsMenuItemButtun(
-            text = "ArgusPro"
+        SettingsMenuItemButton(
+            mainImage = painterResource(Res.drawable.ic_project),
+            text =  stringResource(Res.string.settings_argusPro),
+            arrowImage = painterResource(Res.drawable.ic_arrow_right)
         ) {
             navController.navigate(SettingsScreens.ArgusPro.route) // Навигация на экран ArgusPro
         }
@@ -76,14 +99,18 @@ internal fun SettingsView(
             )
         }
 
-        SettingsMenuItemButtun(
-            text = "Добавить камеру"
+        SettingsMenuItemButton(
+            mainImage = painterResource(Res.drawable.ic_add),
+            text =  stringResource(Res.string.settings_add_cameras),
+            arrowImage = painterResource(Res.drawable.ic_arrow_right)
         ) {
             navController.navigate(SettingsScreens.AddCamera.route) // Навигация на экран AddCamera
         }
 
-        SettingsMenuItemButtun(
-            text = "Список камер"
+        SettingsMenuItemButton(
+            mainImage = painterResource(Res.drawable.ic_webcam),
+            text =  stringResource(Res.string.settings_list_cameras),
+            arrowImage = painterResource(Res.drawable.ic_arrow_right)
         ) {
             navController.navigate(SettingsScreens.CameraList.route) // Навигация на экран CameraList
         }
@@ -101,14 +128,18 @@ internal fun SettingsView(
             )
         }
 
-        SettingsMenuItemButtun(
-            text = "Добавить сервер"
+        SettingsMenuItemButton(
+            mainImage = painterResource(Res.drawable.ic_add),
+            text =  stringResource(Res.string.settings_add_server),
+            arrowImage = painterResource(Res.drawable.ic_arrow_right)
         ) {
             navController.navigate(SettingsScreens.AddServer.route) // Навигация на экран AddServer
         }
 
-        SettingsMenuItemButtun(
-            text = "Список посещенных серверов"
+        SettingsMenuItemButton(
+            mainImage = painterResource(Res.drawable.ic_list),
+            text =  stringResource(Res.string.settings_list_server),
+            arrowImage = painterResource(Res.drawable.ic_arrow_right)
         ) {
             navController.navigate(SettingsScreens.ServerList.route) // Навигация на экран ServerList
         }
@@ -127,7 +158,7 @@ internal fun SettingsView(
 
             }
         ) {
-            Text(text = stringResource(Res.string.settings_signout_button))
+            Text(text = stringResource(Res.string.settings_signOut_button))
         }
 
     }
