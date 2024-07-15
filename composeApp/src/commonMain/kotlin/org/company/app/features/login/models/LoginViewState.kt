@@ -5,5 +5,6 @@ data class LoginViewState(
     val apiPortValue: String = "",
     val loginValue: String = "",
     val passwordValue: String = "",
-    val isSending: Boolean = false
+    val isSending: Boolean = false,
+    val errorMessage: String? = null
 )

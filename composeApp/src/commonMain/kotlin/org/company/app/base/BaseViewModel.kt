@@ -4,14 +4,15 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 
-public abstract class BaseViewModel<State : Any, Action, Event>(initialState: State) : ViewModel() {
+abstract class BaseViewModel<State : Any, Action, Event>(initialState: State) : ViewModel() {
     private val _viewStates = MutableStateFlow(initialState)
-    private val _viewActions = MutableSharedFlow<Action?>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    private val _viewActions =
+        MutableSharedFlow<Action?>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
 
-    public fun viewStates(): StateFlow<State> = _viewStates.asStateFlow()
-    public fun viewActions(): SharedFlow<Action?> = _viewActions.asSharedFlow()
+    fun viewStates(): StateFlow<State> = _viewStates.asStateFlow()
+    fun viewActions(): SharedFlow<Action?> = _viewActions.asSharedFlow()
 
-    protected var viewState: State
+    var viewState: State
         get() = _viewStates.value
         set(value) {
             _viewStates.value = value
@@ -24,7 +25,7 @@ public abstract class BaseViewModel<State : Any, Action, Event>(initialState: St
         }
 
     public abstract fun obtainEvent(viewEvent: Event)
-    
+
     public fun clearAction() {
         viewAction = null
     }

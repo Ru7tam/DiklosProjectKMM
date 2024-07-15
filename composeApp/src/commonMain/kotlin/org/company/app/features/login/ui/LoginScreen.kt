@@ -15,16 +15,17 @@ fun LoginScreen(
     val externalNavHost = LocalNavHost.current
     val viewState by loginViewModel.viewStates().collectAsState()
     val viewAction by loginViewModel.viewActions().collectAsState(null)
-    
+
     LoginView(viewState = viewState) { event ->
         loginViewModel.obtainEvent(event)
     }
-    
+
     when (viewAction) {
         LoginAction.OpenMainScreen -> {
             externalNavHost.navigate(AppScreens.Home.title)
             loginViewModel.clearAction()
         }
-        null -> { }
+
+        null -> {}
     }
 }
