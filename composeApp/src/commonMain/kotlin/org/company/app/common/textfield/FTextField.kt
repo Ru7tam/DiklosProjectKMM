@@ -59,17 +59,3 @@ fun FTextField_Preview() {
         }
     }
 }
-
-@Composable
-@Preview
-fun FTextField_Disabled_Preview() {
-    AppTheme {
-        FTextField(
-            text = "Some Value",
-            hint = "Email",
-            enabled = false
-        ) {
-            
-        }
-    }
-}

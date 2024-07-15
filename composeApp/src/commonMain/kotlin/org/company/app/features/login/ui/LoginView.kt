@@ -1,10 +1,13 @@
 package org.company.app.features.login.ui
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -13,9 +16,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,17 +35,26 @@ import kmp_project.composeapp.generated.resources.login_password
 import org.company.app.common.textfield.FTextField
 import org.company.app.features.login.models.LoginEvent
 import org.company.app.features.login.models.LoginViewState
-import org.company.app.theme.AppTheme
 import org.company.app.theme.FamousTheme
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 internal fun LoginView(
     viewState: LoginViewState,
     eventHandler: (LoginEvent) -> Unit
 ) {
-    Column {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .pointerInput(Unit) {
+            detectTapGestures(
+                onTap = {
+                    keyboardController?.hide()
+                }
+            )
+        }
+    ) {
 
         Spacer(Modifier.height(60.dp))
 
@@ -95,7 +110,10 @@ internal fun LoginView(
         ) {
 
             Box(modifier = Modifier.size(width = 156.dp, height = 40.dp)
-                .clickable {
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) {
 
                 }
             ) {
@@ -110,7 +128,10 @@ internal fun LoginView(
 
             Box(
                 modifier = Modifier.size(width = 84.dp, height = 40.dp)
-                    .clickable {
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
                         eventHandler.invoke(LoginEvent.LoginClicked)
                     }
             ) {
@@ -136,7 +157,7 @@ fun ErrorMessageView(errorMessage: String, onDismiss: () -> Unit) {
         color = Color.Red,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp) // это заменяет padding(start = 16.dp, end = 16.dp)
+            .padding(16.dp)
     ) {
         Box(
             modifier = Modifier
@@ -156,23 +177,5 @@ fun ErrorMessageView(errorMessage: String, onDismiss: () -> Unit) {
                     .clickable { onDismiss() }
             )
         }
-    }
-}
-
-
-@Composable
-@Preview
-internal fun LoginView_Preview() {
-    AppTheme {
-        LoginView(
-            viewState = LoginViewState(
-                ipAddressValue = "192.168.1.100",
-                apiPortValue = "5005",
-                loginValue = "admin",
-                passwordValue = "admin",
-                errorMessage = "Sample error message"
-            ),
-            eventHandler = { }
-        )
     }
 }
